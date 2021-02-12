@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './signup.form.scss';
+
 class SignUpForm extends Component {
     constructor(props) {
         super();
@@ -13,10 +13,14 @@ class SignUpForm extends Component {
     render() {
         
         return (
-            <form className="signupForm" onSubmit={(e) => e.preventDefault()}>
-
-           
-            
+            <form className="signup-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" />
+                <label for="email">Email</label>
+                <input type="email" id="email" />
+                <label for="password">Password</label>
+                <input type="password" id="password" />
+                <button class="btn-form mt-4">Sign Up</button>
             </form>
         );
     }

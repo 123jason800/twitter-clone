@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './login.form.scss';
+
 class LoginForm extends Component {
     constructor(props) {
         super();
@@ -11,9 +11,12 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <form className="loginForm shadow-lg" onSubmit={(e) => e.preventDefault()} >
-        
-            
+            <form className="login-form" onSubmit={(e) => e.preventDefault()} >
+                <label for="username">Username</label>
+                <input type="text" id="username" />
+                <label for="password">Password</label>
+                <input type="password" id="password" />
+                <button className="btn-form mt-4" type="submit">Login</button>
             </form>
         );
     }

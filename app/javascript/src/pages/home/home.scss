@@ -1,0 +1,91 @@
+// Color Palette Twitter
+$blue: #1DA1F2;
+$black: #14171A;
+$gray-dark: #657786;
+$gray-light: #AAB8C2;
+$gray-light-1: #E1E8ED;
+$gray-light-2: #F5F8FA;
+
+// Animations
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.light {
+    opacity: 0.5;
+}
+
+.form {
+    border-radius: 20px;
+    width: 450px;
+    background: $gray-light-2;
+    animation: fadeIn 1s ease-in;
+    padding: 10px;
+
+
+    input {
+        display: block;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: 1px solid $gray-dark;
+        background: $gray-light-1;
+        outline: none;
+        width: 100%;
+    }
+
+    
+    .btn-form {
+        background: $blue;
+        color: $gray-light-2;
+        padding: 10px 30px;
+        border-radius: 20px;
+        border: 0;
+        margin: 0 auto;
+        display: block;
+    }
+
+    @media screen and (max-width: 550px) {
+        width: 100%;
+    }   
+
+    
+}
+
+.form-title {
+    margin: unset;
+    margin-bottom: 20px;
+    color: $blue;
+    font-size: 24px;
+    font-weight: 700;
+    width: 50%;
+    text-align: center;
+    position: relative;
+ 
+    .light,&:after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        width: 50%;
+        background: $blue;
+        opacity: 0;
+    }
+    &:after {
+        opacity: 1;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
