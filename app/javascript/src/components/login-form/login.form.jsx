@@ -12,9 +12,9 @@ class LoginForm extends Component {
     render() {
         return (
             <form className="login-form" onSubmit={(e) => e.preventDefault()} >
-                <label for="username">Username</label>
+                <label htmlFor="username">Username</label>
                 <input type="text" id="username" />
-                <label for="password">Password</label>
+                <label htmlFor="password">Password</label>
                 <input type="password" id="password" />
                 <button className="btn-form mt-4" type="submit">Login</button>
             </form>

@@ -20,7 +20,7 @@ export const images = [
         alt: "San Francisco, United States"
     },
     {
-        imageUrl: "https://images.unsplash.com/photo-1517935706615-2717063c2225?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=701&q=80",
-        alt: "Toronto, Canada"
+        imageUrl: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1371&q=80",
+        alt: "Tokyo, Japan"
     }
 ]

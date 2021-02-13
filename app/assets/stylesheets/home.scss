@@ -2,7 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import 'variables';
+
+
 
 body {
     font-family: 'Poppins', sans-serif!important;
+}
+
+
+.logo-sm {
+    height: 36px;
+    width: 36px;
+}
+
+.logo-with-text {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-text {
+    margin: unset;
+    margin-bottom: 20px;
+    color: $blue;
 }
