@@ -34,31 +34,12 @@ export function jsonHeader(options = {}) {
     });
   }
   export function handleErrors(response) {
+    console.log(response);
     if (!response.ok) {
-      throw Error(response.statusText);
+      throw new Error('internal');
     }
     return response.json();
   }
 
 
-  export function createSession(username,password) {
-    window.location.href = '/dashboard';
-    fetch(`/api/sessions`, safeCredentials({
-      method: 'POST',
-      body: JSON.stringify({
-        user: {
-          password,
-          username,
-        }
-      })
-    }))
-    .then(res => {
-      if (res.success) {
-          window.location.href = '/dashboard';
-      }
-      else {
-          
-      }
-    })
-    .then(handleErrors);
-  }
+  

@@ -12,7 +12,7 @@ module Api
                     httponly: true
                 }
                 render json: {
-                    sucess: true
+                    success: true
                 }
             else 
                 render json: {
@@ -22,10 +22,10 @@ module Api
         end
 
         def authenticated 
-            @token = cookies.permanent.signed[:twitter_session_token]
+            @token = cookies.signed[:twitter_session_token]
             @session = Session.find_by(token: @token)
 
-            if session 
+            if @session 
                 @user = @session.user
                 render json: {
                     authenticated: true,
@@ -35,7 +35,6 @@ module Api
                 render json: {
                     authenticated: false
                 }
-
             end
         end
         

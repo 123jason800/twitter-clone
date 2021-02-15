@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { safeCredentials, handleErrors,createSession } from '../../../utils/fetchHelper';
+import { safeCredentials,handleErrors } from '../../../utils/fetchHelper';
 class SignUpForm extends Component {
     constructor(props) {
         super();
@@ -25,11 +25,36 @@ class SignUpForm extends Component {
                 break;
         }
     }
+    
+    createSession = (username,password) => {
+        fetch(`/api/sessions`, safeCredentials({
+            method: 'POST',
+            body: JSON.stringify({
+            user: {
+                password,
+                username,
+            }
+            })
+        }))
+        .then(handleErrors)
+        .then(res => {
+            console.log(res);
+            if (res.success) {
+                console.log('huh');
+                window.location.href = '/dashboard';
+            }
+            else {
+                throw new Error('unable to login');
+            }
+        })
+        .catch(error => {
+            this.props.setError(error.message);
+        })
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
         const {username, email, password, term} = this.state;
-
         fetch(`/api/users`, safeCredentials({
             method: 'POST',
             body: JSON.stringify({
@@ -41,20 +66,23 @@ class SignUpForm extends Component {
               }
             })
           }))
+          .then(handleErrors)
           .then(res => {
             if (res.success) {
-                createSession(username,password);
+                this.createSession(username,password);
             }
             else {
-                
+                throw new Error('invalid');
             }
           })
-          .then(handleErrors);
-          
+          .catch(error => {
+              this.props.setError(error.message);
+          })
     }
 
+
     render() {
-        
+  
         return (
             <form onSubmit={this.handleSubmit} className="signup-form">
                 <label htmlFor="username">Username</label>
