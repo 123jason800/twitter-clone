@@ -1,10 +1,5 @@
-// Color Palette Twitter
-$blue: #1DA1F2;
-$black: #14171A;
-$gray-dark: #657786;
-$gray-light: #AAB8C2;
-$gray-light-1: #E1E8ED;
-$gray-light-2: #F5F8FA;
+@import '../../../../assets/stylesheets/variables';
+@import '../../components/background-container/background.container';
 
 // Animations
 @keyframes fadeIn {
@@ -40,15 +35,7 @@ $gray-light-2: #F5F8FA;
     }
 
     
-    .btn-form {
-        background: $blue;
-        color: $gray-light-2;
-        padding: 10px 30px;
-        border-radius: 20px;
-        border: 0;
-        margin: 0 auto;
-        display: block;
-    }
+  
 
     @media screen and (max-width: 550px) {
         width: 100%;

@@ -1,0 +1,47 @@
+.input-post {
+    min-height: 100px;
+    background: $white;
+}
+
+.userpost-name {
+    margin: unset;
+    margin-bottom: 5px;
+    font-size: 18px;
+}   
+
+.userpost-alias {
+    color: $gray-dark;
+}
+
+.tweet-input {
+    outline: none;
+    border: 1px solid $gray-light;
+    border-radius: 10px;
+    background: $gray-light-1;
+    height: 100px;
+    resize: none;
+}
+
+.btn-tweet {
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+
+.posts {
+    min-height: 400px;
+    background: $white;
+    position: relative;
+}
+
+.no-posts {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transform: translate(-50%, -50%); 
+    top: 50%;  
+    left: 50%
+}

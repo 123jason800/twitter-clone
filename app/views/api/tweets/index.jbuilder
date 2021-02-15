@@ -1,3 +1,4 @@
+json.success true
 json.tweets do
     json.array! @tweets do |tweet|
         json.id tweet.user.id

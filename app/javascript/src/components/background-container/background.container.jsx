@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import {images} from './images';
-import './background.container.scss';
+
 
 function BackgroundContainer(props) {
     const [currentImageIndex,setCurrentImageIndex] = useState(0);

@@ -1,0 +1,27 @@
+header {
+    min-height: 60px;
+    background: $white;
+}
+
+.nav-title {
+    margin: unset;
+    font-size: 24px;
+    color: $black;
+}
+
+#nav-brand {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    color: $black;
+}
+
+.icon-bars {
+    font-size: 20px;
+    line-height: 1.25rem;
+}
+
+
+

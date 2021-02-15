@@ -1,7 +1,7 @@
 import React,{Fragment,useState} from 'react';
 import ReactDOM from 'react-dom';
 import './home.scss';
-import TwitterLogo from './twitter_icon.svg';
+import TwitterLogo from '../../../../assets/images/twitter_icon.svg';
 
 import LoginForm from '../../components/login-form/login.form';
 import SignUpForm from '../../components/signup-form/signup.form';
