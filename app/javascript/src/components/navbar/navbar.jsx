@@ -2,7 +2,7 @@ import React from 'react';
 import TwitterLogo from '../../../../assets/images/twitter-logo-1-1.svg';
 
 
-const Navbar = props => (
+const Navbar = ({logOut})=> (
     <header className="shadow">
         <div className="p-0 container-lg">
         <nav className="navbar navbar-expand-lg nav-twitter">
@@ -23,7 +23,7 @@ const Navbar = props => (
                         <a className="nav-link" href="#">User</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Logout</a>
+                        <a className="nav-link" onClick={logOut}>Logout</a>
                     </li>
                 </ul>
             </div>

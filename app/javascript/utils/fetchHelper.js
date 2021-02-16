@@ -34,7 +34,6 @@ export function jsonHeader(options = {}) {
     });
   }
   export function handleErrors(response) {
-    console.log(response);
     if (!response.ok) {
       throw new Error('internal');
     }

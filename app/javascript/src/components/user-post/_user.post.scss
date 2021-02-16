@@ -11,6 +11,7 @@
 
 .userpost-alias {
     color: $gray-dark;
+    font-size: 12px;
 }
 
 .tweet-input {
@@ -30,18 +31,21 @@
 
 .posts {
     min-height: 400px;
-    background: $white;
-    position: relative;
+ 
+    
 }
 
 .no-posts {
-    position: absolute;
+
     margin-left: auto;
     margin-right: auto;
-    left: 0;
-    right: 0;
     text-align: center;
-    transform: translate(-50%, -50%); 
-    top: 50%;  
-    left: 50%
+    min-height: 400px;
+    line-height: 400px;
+    background: $white;
+}
+
+.post-tweet {
+    background: $white;
+    min-height: 200px;
 }

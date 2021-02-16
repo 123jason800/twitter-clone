@@ -1,0 +1,11 @@
+.author {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+
+.author,
+.card-title {
+    font-size: 12px;
+}

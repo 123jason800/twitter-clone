@@ -6,27 +6,107 @@ import {
     Switch,
     Route,
   } from 'react-router-dom';
-  import { handleErrors } from '../../../utils/fetchHelper';
-
+  import { handleErrors,safeCredentials } from '../../../utils/fetchHelper';
 
 import './dashboard.scss'; 
+
+// Components
 import UserPost from '../../components/user-post/user.post';
 import Navbar from '../../components/navbar/navbar';
 import SideBar from '../../components/sidebar/sidebar';
 import ProfileCard from '../../components/profile-card/profile.card';
 import Loader from '../../components/loader/loader';
+import News from '../../components/news/news';
+
+
+
 class Dashboard extends Component {
     constructor(props) {
         super();
         this.state = {
-            username: null
+            username: null,
+            message:'',
+            tweets: [],
+            error: null,
+            loaded: false
         };
     }
 
 
-    componentDidMount() {
-        
+    getTweets = () => {
+            fetch(`/api/tweets`)
+            .then(handleErrors)
+            .then(res => {
+               if (res.success) {
+                    let {tweets} = res;
+                    this.setState({tweets,loaded:true});
+               }
+    
+               else {
+                    this.setState({error: 'Unable to get Tweets'});
+                    
+               }
+            });
     }
+
+    postTweet = (message) => {
+        this.setState({loaded:false});
+        fetch(`/api/tweets`, safeCredentials({
+            method: 'POST',
+            body: JSON.stringify({
+            tweet: {
+               message
+            }
+            })
+        }))
+        .then(handleErrors)
+        .then(res => {
+            if (res.success) {
+                this.getTweets();
+            }
+            else {
+                throw new Error('unable to post');
+            }
+        })
+        .catch(error => {
+            this.setState({error: error.message});
+        })
+    }
+
+    logOut = () => {
+        fetch(`/api/sessions`, safeCredentials({
+            method: 'DELETE',
+        }))
+        .then(handleErrors)
+        .then(res => {
+            if (res.success) {
+                window.location.href='/';
+            }
+            else {
+                throw new Error('unable to logout');
+            }
+        })
+        .catch(error => {
+            this.setState({error: error.message});
+        })
+    }
+
+
+
+    componentDidMount() {
+        this.getTweets();
+    }
+
+    shouldComponentUpdate(nextProps,nextState) {
+       return true;
+    }
+
+    componentWillUpdate(){
+        // perform any preparations for an upcoming update
+        console.log('update');
+        console.log(this.state.message);
+    }
+
 
     componentWillMount() {
         // Authentication Check
@@ -39,14 +119,26 @@ class Dashboard extends Component {
             else {
                this.setState({username:res.username});
             }
-        })
+        });
+    }
+
+
+    handleChange = (e) => {
+        const {value} = e.target;
+        this.setState({message: value});
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.postTweet(this.state.message);
+        this.setState({message: ''});
     }
 
     render() {
         return (
          !this.state.username ? <Loader /> :
             <Fragment>
-                <Navbar />
+                <Navbar logOut={this.logOut}/>
                 <div className="container mt-5">
                     <div className="row">
                         <div className="col-md-3">
@@ -55,10 +147,20 @@ class Dashboard extends Component {
                             </SideBar>
                         </div>
                         <div className="col-md-6">
-                            <UserPost />
+                            {this.state.loaded ? 
+                            <UserPost 
+                            handleSubmit={this.handleSubmit} 
+                            handleChange={this.handleChange} 
+                            value={this.state.message}
+                            tweets={this.state.tweets}
+                            />
+                            :
+                            <Loader />
+                            }
                         </div>
                         <div className="col-md-3">
                             <SideBar>
+                            <News/>
                             </SideBar>
                         </div>
                     </div>
