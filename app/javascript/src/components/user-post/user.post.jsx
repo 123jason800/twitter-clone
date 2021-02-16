@@ -12,95 +12,22 @@ const Tweet = ({username,message}) => (
 )
 
 
-class UserPost extends Component {
+const  UserPost =({handleSubmit,handleChange,message,tweets,loaded}) {
     
-    constructor(props) {
-        super();
-        this.state = {
-            tweets: [],
-            message: '',
-            error: null,
-            loaded: false
-        };
-    }
-
-    handleChange = (e) => {
-        const {value} = e.target;
-        this.setState({message: value});
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.postTweet(this.state.message);
-        this.setState({message: ''});
-    }
-
- 
- 
-
-    getTweets = () => {
-        fetch(`/api/tweets`)
-        .then(handleErrors)
-        .then(res => {
-           if (res.success) {
-                let {tweets} = res;
-                this.setState({tweets,loaded:true});
-           }
-
-           else {
-                this.setState({error: 'Unable to get Tweets'});
-                
-           }
-        });
-    }
-
-
-    
-    postTweet = (message) => {
-        this.setState({loaded:false});
-        fetch(`/api/tweets`, safeCredentials({
-            method: 'POST',
-            body: JSON.stringify({
-            tweet: {
-               message
-            }
-            })
-        }))
-        .then(handleErrors)
-        .then(res => {
-            if (res.success) {
-                this.getTweets();
-            }
-            else {
-                throw new Error('unable to post');
-            }
-        })
-        .catch(error => {
-            this.setState({error: error.message});
-        })
-    }
-
-    
-    componentDidMount() {
-        this.getTweets();
-    }
-    
-    
-    render() {
         return (
             <Fragment>
                 <div className="p-4 input-post shadow">
-                        <form onSubmit={this.handleSubmit}>
-                            <textarea onChange={this.handleChange} className="tweet-input mb-3 w-100 px-2 py-1" type="text" value={this.state.message}/> 
+                        <form onSubmit={handleSubmit}>
+                            <textarea onChange={handleChange} className="tweet-input mb-3 w-100 px-2 py-1" type="text" value={message}/> 
                             <button className="btn-form btn-tweet w-75" type="submit">Tweet</button>
                         </form> 
                 </div>
                 <div className="posts mt-5 pb-5">
-                    {!this.state.loaded ? <Loader />
+                    {!loaded ? <Loader />
                     :
-                    this.state.tweets.length ?
+                    tweets.length ?
                     <div className="posts">
-                    {this.state.tweets.map(tweet => <Tweet key={uuid()} {...tweet} />)}
+                    {tweets.map(tweet => <Tweet key={uuid()} {...tweet} />)}
                     </div>
                     :
                     <div className="no-posts shadow">
@@ -109,10 +36,7 @@ class UserPost extends Component {
                     }
                 </div>
             </Fragment>
-        );
- 
-    }
-     
+        ); 
 }
 
 export default UserPost;

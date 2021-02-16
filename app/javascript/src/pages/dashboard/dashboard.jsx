@@ -26,6 +26,8 @@ class Dashboard extends Component {
         this.state = {
             username: null,
             error: null,
+            message: '',
+            tweets: []
         };
     }
 
@@ -49,6 +51,64 @@ class Dashboard extends Component {
         .catch(error => {
             this.setState({error: error.message});
         })
+    }
+
+    postTweet = (message) => {
+        this.setState({loaded:false});
+        fetch(`/api/tweets`, safeCredentials({
+            method: 'POST',
+            body: JSON.stringify({
+            tweet: {
+               message
+            }
+            })
+        }))
+        .then(handleErrors)
+        .then(res => {
+            if (res.success) {
+                this.getTweets();
+            }
+            else {
+                throw new Error('unable to post');
+            }
+        })
+        .catch(error => {
+            this.setState({error: error.message});
+        })
+    }
+
+    getTweets = () => {
+        fetch(`/api/tweets`)
+        .then(handleErrors)
+        .then(res => {
+           if (res.success) {
+                let {tweets} = res;
+                this.setState({tweets,loaded:true});
+           }
+
+           else {
+                this.setState({error: 'Unable to get Tweets'});
+                
+           }
+        });
+    }
+
+    handleChange = (e) => {
+        const {value} = e.target;
+        this.setState({message: value});
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.postTweet(this.state.message);
+        this.setState({message: ''});
+    }
+
+
+
+       
+    componentDidMount() {
+        this.getTweets();
     }
 
 
@@ -98,7 +158,12 @@ class Dashboard extends Component {
                         </div>
                         <ScrollBar >
                             <div className="col-sm-8 col-12">
-                                <UserPost />
+                                <UserPost 
+                                loaded={this.state.loaded}
+                                tweets={this.state.tweets}
+                                message={this.state.message}
+                                loaded={this.state.loaded}
+                                />
                             </div>
                             <div className="col-sm-4 col-12">
                                 <SideBar>
