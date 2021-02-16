@@ -2,10 +2,23 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
+  
 }
 
 .author,
 .card-title {
     font-size: 12px;
 }
+
+.article-card {
+    &:hover {
+        transform: scale(1.05);
+        transition: 0.2s ease-in;
+    }
+    color: unset;
+}
+
+.news {
+    padding-bottom: 20px;
+}
+

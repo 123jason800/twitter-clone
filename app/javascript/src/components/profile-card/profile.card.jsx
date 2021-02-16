@@ -1,14 +1,9 @@
 import React,{Component} from 'react';
 
-class ProfileCard extends Component {
-    constructor() {
-        super();
-        this.state = {
-            tweets: 0,
-        }
-    }
+const  ProfileCard = (props) => {
 
-    render() {
+
+
         return (
         <div className= "profile-card text-center shadow p-3 mb-5">
             <div className="name-field pr-3">
@@ -23,7 +18,7 @@ class ProfileCard extends Component {
             </div>
         </div>
         );
-    }
+ 
 }
 
 

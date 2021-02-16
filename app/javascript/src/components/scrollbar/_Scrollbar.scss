@@ -1,0 +1,23 @@
+.scrollbar {
+    display: flex;
+    overflow-y:auto;
+    height: 85vh;
+}
+
+body {
+    overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+ 
+    width: 3px;
+   
+ 
+  
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $gray-light;
+    border-radius: 50px;
+    height: 200px;
+}

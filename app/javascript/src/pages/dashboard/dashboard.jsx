@@ -17,7 +17,7 @@ import SideBar from '../../components/sidebar/sidebar';
 import ProfileCard from '../../components/profile-card/profile.card';
 import Loader from '../../components/loader/loader';
 import News from '../../components/news/news';
-
+import ScrollBar from '../../components/scrollbar/ScrollBar';
 
 
 class Dashboard extends Component {
@@ -25,53 +25,13 @@ class Dashboard extends Component {
         super();
         this.state = {
             username: null,
-            message:'',
-            tweets: [],
             error: null,
-            loaded: false
         };
     }
 
 
-    getTweets = () => {
-            fetch(`/api/tweets`)
-            .then(handleErrors)
-            .then(res => {
-               if (res.success) {
-                    let {tweets} = res;
-                    this.setState({tweets,loaded:true});
-               }
+  
     
-               else {
-                    this.setState({error: 'Unable to get Tweets'});
-                    
-               }
-            });
-    }
-
-    postTweet = (message) => {
-        this.setState({loaded:false});
-        fetch(`/api/tweets`, safeCredentials({
-            method: 'POST',
-            body: JSON.stringify({
-            tweet: {
-               message
-            }
-            })
-        }))
-        .then(handleErrors)
-        .then(res => {
-            if (res.success) {
-                this.getTweets();
-            }
-            else {
-                throw new Error('unable to post');
-            }
-        })
-        .catch(error => {
-            this.setState({error: error.message});
-        })
-    }
 
     logOut = () => {
         fetch(`/api/sessions`, safeCredentials({
@@ -93,9 +53,6 @@ class Dashboard extends Component {
 
 
 
-    componentDidMount() {
-        this.getTweets();
-    }
 
     shouldComponentUpdate(nextProps,nextState) {
        return true;
@@ -103,8 +60,7 @@ class Dashboard extends Component {
 
     componentWillUpdate(){
         // perform any preparations for an upcoming update
-        console.log('update');
-        console.log(this.state.message);
+     
     }
 
 
@@ -122,47 +78,34 @@ class Dashboard extends Component {
         });
     }
 
+    
 
-    handleChange = (e) => {
-        const {value} = e.target;
-        this.setState({message: value});
-    }
+  
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.postTweet(this.state.message);
-        this.setState({message: ''});
-    }
+
 
     render() {
         return (
          !this.state.username ? <Loader /> :
             <Fragment>
                 <Navbar logOut={this.logOut}/>
-                <div className="container mt-5">
+                <div className="container mt-4">
                     <div className="row">
                         <div className="col-md-3">
                             <SideBar>
-                                <ProfileCard />
+                                <ProfileCard username={this.state.username} />
                             </SideBar>
                         </div>
-                        <div className="col-md-6">
-                            {this.state.loaded ? 
-                            <UserPost 
-                            handleSubmit={this.handleSubmit} 
-                            handleChange={this.handleChange} 
-                            value={this.state.message}
-                            tweets={this.state.tweets}
-                            />
-                            :
-                            <Loader />
-                            }
-                        </div>
-                        <div className="col-md-3">
-                            <SideBar>
-                            <News/>
-                            </SideBar>
-                        </div>
+                        <ScrollBar >
+                            <div className="col-sm-8 col-12">
+                                <UserPost />
+                            </div>
+                            <div className="col-sm-4 col-12">
+                                <SideBar>
+                                    <News/>
+                                </SideBar>
+                            </div>
+                        </ScrollBar>
                     </div>
                 </div>
             </Fragment>

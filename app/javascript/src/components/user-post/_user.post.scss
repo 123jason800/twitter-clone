@@ -1,5 +1,5 @@
 .input-post {
-    min-height: 100px;
+    min-height: 200px;
     background: $white;
 }
 
@@ -31,8 +31,6 @@
 
 .posts {
     min-height: 400px;
- 
-    
 }
 
 .no-posts {
@@ -48,4 +46,18 @@
 .post-tweet {
     background: $white;
     min-height: 200px;
+    &:hover {
+        transform: scale(1.05);
+        transition: 0.2s ease-in;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
