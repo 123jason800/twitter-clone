@@ -4,7 +4,11 @@ json.tweets do
         json.id tweet.user.id
         json.username tweet.user.username
         json.message tweet.message
-
-        json.image url_for(tweet.image) if tweet.image.attached?
+        json.tweetID tweet.id
+        if tweet.image.attached?
+            json.image url_for(tweet.image)
+        else
+            json.image nil
+        end
     end
 end

@@ -1,0 +1,64 @@
+.userpost-name {
+    margin: unset;
+    margin-bottom: 5px;
+    font-size: 18px;
+}   
+
+.userpost-alias {
+    color: $gray-dark;
+    font-size: 12px;
+}
+
+
+.post-tweet {
+    position: relative;
+    background: $white;
+    min-height: 200px;
+    &:hover {
+        transform: scale(1.05);
+        transition: 0.2s ease-in;
+    }
+    word-wrap: break-word; 
+
+    .tweet-delete {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    img {
+        margin-bottom: 30px;
+    }
+}
+
+.post-tweet-small {
+    background: $white;
+    position: relative;
+    height: 120px;
+    p {
+      
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-bottom: unset;
+    }
+
+    img {
+        float: left;
+        width: 70px;
+        height: 30px;
+        object-fit: cover;
+    }
+ 
+  
+    &:hover {
+        transform: scale(1.05);
+        transition: 0.2s ease-in;
+    }
+
+    .tweet-delete {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+}

@@ -48,3 +48,17 @@ body {
 a:hover {
     cursor: pointer;
 }
+
+.icon-upload {
+    font-size: 34px;
+    float: right;
+    
+    &:hover {
+        cursor: pointer;
+        
+    }
+}
+
+label[for="image-select"] {
+    float: right;
+}

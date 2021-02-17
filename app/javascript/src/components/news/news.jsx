@@ -4,6 +4,8 @@ import Loader from '../loader/loader';
 
 import {sample} from 'underscore';
 
+import {handleErrors} from '../../../utils/fetchHelper';
+
 const Article = ({source,author, title, urlToImage,url}) => (
     <a href={url} target="_blank" className="card article-card shadow px-4 py-2 mb-3">
         <p className="card-title mb-2 font-weight-bold text-bold">{title}</p>
@@ -21,16 +23,18 @@ class News extends Component {
 
         this.state = {
             loaded: false,
-            articles: []
+            articles: [],
+            error: null
         }
     }
 
 
     getNews = () => {
-        fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=95d80332b662412b823e8f83a411537d`)
-        .then(res => res.json())
+        fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=95d80332b662412b823e8f83a411537`)
+        .then(handleErrors)
         .then(res => {
-            let articles = sample(res.articles,4);
+          
+            let articles = sample(res.articles,10);
           
 
             this.setState({
@@ -38,7 +42,12 @@ class News extends Component {
                 loaded: true
             });
             
-        });
+        })
+        .catch(error => {
+            this.setState({error: error.message,loaded: true});
+        })
+        
+       
     }
 
     componentDidMount() {
@@ -51,6 +60,11 @@ class News extends Component {
         return (
         <div className="news">
             {this.state.loaded? 
+                this.state.error? 
+                <div className="placeholder shadow">
+                    Ran Out of News Requests :(
+                </div>
+                :
                 this.state.articles.map((article,index)=> (
                     <Article key={index} {...article}/>
                
