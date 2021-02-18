@@ -30,7 +30,7 @@ class News extends Component {
 
 
     getNews = () => {
-        fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=95d80332b662412b823e8f83a411537`)
+        fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=95d80332b662412b823e8f83a411537d`)
         .then(handleErrors)
         .then(res => {
           
