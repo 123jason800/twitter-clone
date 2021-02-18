@@ -6,14 +6,15 @@
 #
 default: &default
   adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
  
 
 development:
   <<: *default
-  username: postgres
-  password: 1099359s
+  # username: postgres
+  # password: 1099359s
   host: localhost
   port: 5432
   database: twitter_clone_dev
