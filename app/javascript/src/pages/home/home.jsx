@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 import './home.scss';
 import TwitterLogo from '../../../../assets/images/twitter_icon.svg';
 
-import LoginForm from '../../components/login-form/login.form';
-import SignUpForm from '../../components/signup-form/signup.form';
-import BackgroundContainer from '../../components/background-container/background.container';
-import Noltification from '../../components/noltifcation/noltification';
-import {handleErrors } from '../../../utils/fetchHelper';
+import LoginForm from '@comp/login-form/login.form';
+import SignUpForm from '@comp/signup-form/signup.form';
+import BackgroundContainer from '@comp/background-container/background.container';
+import Noltification from '@comp/noltifcation/noltification';
+import {handleErrors } from '@utils/fetchHelper';
 
 function Home() {
     const [isLoginForm, setLoginForm] = useState(true);

@@ -16,7 +16,7 @@ const Noltification = ({setError,error}) => {
                 error = 'Incorrect Password/Username';
                 break;
             case 'invalid-post':
-                error= 'Unable to Post'
+                error= 'Somewhere is empty...'
                 break;
             default:
                 error = type;

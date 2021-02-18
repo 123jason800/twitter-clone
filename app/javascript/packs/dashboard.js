@@ -1,1 +1,1 @@
-import '../src/pages/dashboard/dashboard.jsx';
+import '../src/pages/router/routes.jsx';

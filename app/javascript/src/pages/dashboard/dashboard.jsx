@@ -5,21 +5,24 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-  } from 'react-router-dom';
+    Link,
+} from 'react-router-dom';
+
 import { handleErrors,safeCredentials,jsonHeader} from '../../../utils/fetchHelper';
 
 import './dashboard.scss'; 
 
 // Components
-import UserPost from '../../components/user-post/user.post';
-import Navbar from '../../components/navbar/navbar';
-import SideBar from '../../components/sidebar/sidebar';
-import ProfileCard from '../../components/profile-card/profile.card';
-import Loader from '../../components/loader/loader';
-import News from '../../components/news/news';
-import ScrollBar from '../../components/scrollbar/ScrollBar';
-import Noltification from '../../components/noltifcation/noltification';
-import TweetForm from '../../components/tweet-form/tweet.form';
+import UserPost from '@comp/user-post/user.post';
+import Navbar from '@comp/navbar/navbar';
+import SideBar from '@comp/sidebar/sidebar';
+import ProfileCard from '@comp/profile-card/profile.card';
+import Loader from '@comp/loader/loader';
+import News from '@comp/news/news';
+import ScrollBar from '@comp/scrollbar/ScrollBar';
+import Noltification from '@comp/noltifcation/noltification';
+import TweetForm from '@comp/tweet-form/tweet.form';
+
 class Dashboard extends Component {
     constructor(props) {
         super();
@@ -79,13 +82,15 @@ class Dashboard extends Component {
     }
 
     postTweet = () => {
-
-      
         this.setState({loaded:false});
      
         let formData = new FormData();
         if (this.state.message) {
             formData.append('tweet[message]', this.state.message);
+        }
+        else {
+            this.setState({error: 'invalid-post',loaded: true});
+            return;
         }
 
         if (this.state.image.file) {
@@ -187,7 +192,7 @@ class Dashboard extends Component {
     }
 
     render() {
-      
+     
         return (
          !this.state.username ? <Loader /> :
             <Fragment>
@@ -235,6 +240,8 @@ class Dashboard extends Component {
     
     }
 }
+
+export default Dashboard;
 
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
