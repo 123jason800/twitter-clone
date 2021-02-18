@@ -147,7 +147,7 @@ class Dashboard extends Component {
 
  
       reader.readAsDataURL(e.target.files[0]);
-    
+      e.target.value = '';
       
     }
     
@@ -182,7 +182,7 @@ class Dashboard extends Component {
     }
 
     render() {
-     
+   
         return (
          !this.state.username ? <Loader /> :
             <Fragment>
