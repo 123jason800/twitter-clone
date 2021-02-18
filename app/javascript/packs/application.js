@@ -25,6 +25,5 @@ import 'jquery/dist/jquery';
 import 'popper.js/dist/popper.js';
 
 // Bootstrap Library
-import 'bootstrap/dist/css/bootstrap';
 import 'bootstrap/dist/js/bootstrap';
 

@@ -1,20 +1,10 @@
 import React,{Component, Fragment} from 'react';
-import ReactDOM from 'react-dom';
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-} from 'react-router-dom';
-
 import { handleErrors,safeCredentials,jsonHeader} from '../../../utils/fetchHelper';
-
 import './dashboard.scss'; 
+
 
 // Components
 import UserPost from '@comp/user-post/user.post';
-import Navbar from '@comp/navbar/navbar';
 import SideBar from '@comp/sidebar/sidebar';
 import ProfileCard from '@comp/profile-card/profile.card';
 import Loader from '@comp/loader/loader';
@@ -196,7 +186,7 @@ class Dashboard extends Component {
         return (
          !this.state.username ? <Loader /> :
             <Fragment>
-                <Navbar logOut={this.logOut}/>
+               
                 {this.state.error ? <Noltification error={this.state.error} setError={this.setError} /> : null }
                 <div className="container mt-4">
                     <div className="row">
@@ -243,10 +233,3 @@ class Dashboard extends Component {
 
 export default Dashboard;
 
-document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(
-      <Dashboard />,
-      document.body.appendChild(document.createElement('div')),
-    )
-})
-  

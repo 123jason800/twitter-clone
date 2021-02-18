@@ -1,5 +1,4 @@
-import React, {Component, Fragment} from 'react';
-import Navbar from '@comp/navbar/navbar';
+import React, {Component} from 'react';
 import Loader from '@comp/loader/loader';
 import Tweet from '@comp/tweet/tweet';
 import uuid from 'react-uuid';
@@ -64,7 +63,7 @@ class User extends Component {
         .then(handleErrors)
         .then(res => {
             if (res.success) {
-                this.getUserTweets(res.username);
+                this.getUserTweets(this.state.username);
             }
             else {
                 throw new Error('Unable to Delete');
@@ -78,21 +77,19 @@ class User extends Component {
 
     render () {
         return (
-            <Fragment >
-                <Navbar />
+                <div className="container mt-5">
                 {this.state.loaded ? 
-                <div className="container">
-                    {!this.state.tweets.length ? <h1 className="text-center mt-5">No tweets Yet</h1>
+                    !this.state.tweets.length ? <h1 className="text-center mt-5">No tweets Yet</h1>
                     :
                     <div className="row mt-5">
-                    {this.state.tweets.map(tweet => <div className="col-12 col-md-4"> <Tweet deleteTweet={this.deleteTweet} deletable={true} currentUser={this.state.username} key={uuid()} {...tweet} /></div>)}
+                        {this.state.tweets.map(tweet => <div key={uuid()}  className="col-12 col-md-4"> <Tweet  deleteTweet={this.deleteTweet} deletable={true} currentUser={this.state.username} key={uuid()} {...tweet} /></div>)}
                     </div>
+                   
+                    :   
+                    <Loader/>
+                    
                 }
                 </div>
-                :   
-                <Loader/>
-                }
-            </Fragment>
         );
     }
 }

@@ -1,4 +1,4 @@
-import React,{Fragment,useState, useEffect} from 'react';
+import React,{useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 
 import './home.scss';
@@ -26,7 +26,7 @@ function Home() {
     },[]);
     
     return (
-        <Fragment>
+        
             <BackgroundContainer>
                
                 <div className="container d-flex h-100 justify-content-center align-items-center flex-column">
@@ -51,7 +51,7 @@ function Home() {
                         </div>
                 </div> 
             </BackgroundContainer>
-        </Fragment>
+        
     );
 
       

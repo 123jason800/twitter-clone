@@ -1,4 +1,4 @@
-import React,{Fragment} from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
@@ -6,16 +6,19 @@ import {
   Route,
 } from "react-router-dom";
 
-import User from '../user/user';
+
 import Dashboard from '../dashboard/dashboard';
+import User from '../user/user';
+import Navbar from '@comp/navbar/navbar';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Router>
       <div>
+        <Navbar/>
         <Switch>
-          <Route exact path="/dashboard" component={Dashboard}/>
           <Route exact path="/user" component={User} />
+          <Route exact path="/dashboard" component={Dashboard} />
         </Switch>
         </div>
     </Router>
