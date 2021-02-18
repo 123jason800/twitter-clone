@@ -9,7 +9,7 @@ gem 'webpacker', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg'
-gem 'rake'
+
 
 
 group :development, :test do
