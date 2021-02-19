@@ -32,21 +32,25 @@
 }
 
 .post-tweet-small {
+    
     background: $white;
     position: relative;
-    height: 120px;
+    height: 200px;
+    .userpost-name {
+        margin-bottom: 5px;
+    }
     p {
       
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        margin-bottom: unset;
+        
     }
 
     img {
-        float: left;
-        width: 70px;
-        height: 30px;
+        display: block;
+        width: 150px;
+        height: 120px;
         object-fit: cover;
     }
  

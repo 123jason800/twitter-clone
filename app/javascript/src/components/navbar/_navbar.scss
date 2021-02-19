@@ -23,5 +23,8 @@ header {
     line-height: 1.25rem;
 }
 
-
+.nav-link.active
+ {
+    color: $blue;
+}
 

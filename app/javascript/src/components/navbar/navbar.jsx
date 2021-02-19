@@ -1,6 +1,6 @@
 import React from 'react';
 import TwitterLogo from '../../../../assets/images/twitter-logo-1-1.svg';
-import {Link} from 'react-router-dom';
+import {Link,NavLink,useLocation} from 'react-router-dom';
 import {safeCredentials,handleErrors} from '@utils/fetchHelper';
 
 const Navbar = props => {
@@ -20,6 +20,12 @@ const Navbar = props => {
       
     }
 
+    let location = useLocation();
+    
+    
+
+
+
     return (
     <header className="shadow">
         <div className="p-0 container-lg">
@@ -34,11 +40,12 @@ const Navbar = props => {
             </button>
             <div className="collapse p-2 navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ml-auto">
-                    <li className="nav-item active">
-                        <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                
+                    <li className="nav-item ">
+                        <NavLink exact activeClassName="active"  className="nav-link" to="/dashboard">Dashboard</NavLink>
                     </li>
                     <li className="nav-item">
-                    <Link className="nav-link" to="/user">User</Link>
+                        <NavLink  exact activeClassName="active"  className="nav-link" to="/user">User</NavLink>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" onClick={() => logOut()}>Logout</a>
