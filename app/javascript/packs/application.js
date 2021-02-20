@@ -17,13 +17,9 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-// Jqeury for bootstrap
 
-import 'jquery/dist/jquery';
 
-// Popper 
-import 'popper.js/dist/popper.js';
+console.log('<%= ENV["DB_HOST"] %>')
+console.log(process.env);
 
-// Bootstrap Library
-import 'bootstrap/dist/js/bootstrap';
-
+import "bootstrap"

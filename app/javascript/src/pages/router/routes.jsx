@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div>
         <Navbar/>
         <Switch>
-          <Route exact path="/user" component={User} />
+          <Route path="/user" component={User} />
+          <Route path="/user/:username" component={User} />
           <Route exact path="/dashboard" component={Dashboard} />
         </Switch>
         </div>

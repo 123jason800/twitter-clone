@@ -5,6 +5,7 @@ import uuid from 'react-uuid';
 
 import {handleErrors,safeCredentials} from '@utils/fetchHelper';
 
+
 class User extends Component {
     constructor() {
         super();
@@ -12,11 +13,11 @@ class User extends Component {
             loaded: false,
             tweets: [],
             username: null
-         
+
         };
     }
     getUserTweets = (username) => {
-       
+   
         fetch(`/api/user/tweets/${username}`)
         .then(handleErrors)
         .then(res => {
@@ -39,6 +40,10 @@ class User extends Component {
     }
 
     componentDidMount() {
+
+        const {username} = this.props.match.params;
+  
+
         fetch(`/api/sessions`)
         .then(handleErrors)
         .then(res => {

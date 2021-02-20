@@ -1,7 +1,6 @@
 import React,{Component, Fragment} from 'react';
-import { handleErrors,safeCredentials,jsonHeader} from '../../../utils/fetchHelper';
 import './dashboard.scss'; 
-
+import { handleErrors,safeCredentials,jsonHeader} from '../../../utils/fetchHelper';
 
 // Components
 import UserPost from '@comp/user-post/user.post';
@@ -186,7 +185,6 @@ class Dashboard extends Component {
         return (
          !this.state.username ? <Loader /> :
             <Fragment>
-               
                 {this.state.error ? <Noltification error={this.state.error} setError={this.setError} /> : null }
                 <div className="container mt-4">
                     <div className="row">

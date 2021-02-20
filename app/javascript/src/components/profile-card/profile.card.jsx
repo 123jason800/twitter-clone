@@ -23,7 +23,7 @@ const ProfileCard = ({username,tweets,deleteTweet}) => {
         </div>
         <div className="your-tweets">
             <h3 className="text-center mb-3">Recent</h3>
-            {yourTweets.slice(0,3).map(tweet => <Tweet deleteTweet={deleteTweet} deletable={true}  size='small' key={uuid()} {...tweet} />)}
+            {yourTweets.slice(0,2).map(tweet => <Tweet deleteTweet={deleteTweet} deletable={true}  size='small' key={uuid()} {...tweet} />)}
         </div>
         </Fragment>
         );

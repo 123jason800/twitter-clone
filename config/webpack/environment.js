@@ -1,8 +1,7 @@
-const { environment } = require('@rails/webpacker')
+const { environment} = require('@rails/webpacker');
+const path = require('path');
 
 
-
-const path = require('path')
 const customConfig = {
   resolve: {
     alias: {
@@ -13,6 +12,21 @@ const customConfig = {
   }
 }
 
+const webpack = require("webpack")
+
+environment.plugins.append("Provide", new webpack.ProvidePlugin({
+
+$: 'jquery',
+
+jQuery: 'jquery',
+
+Popper: ['popper.js', 'default']
+
+}))
+
+
+
+
 environment.config.merge(customConfig);
-environment.splitChunks();
+
 module.exports = environment
