@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import Loader from '@comp/loader/loader';
 import Tweet from '@comp/tweet/tweet';
 import uuid from 'react-uuid';
+
 
 import {handleErrors,safeCredentials} from '@utils/fetchHelper';
 
@@ -85,18 +86,50 @@ class User extends Component {
     render () {
         return (
                 <div className="container mt-5">
+                
                 {this.state.loaded ? 
-                    !this.state.tweets.length ? <h1 className="text-center mt-5">No tweets Yet</h1>
+                    !this.state.tweets.length ?
+                    <Fragment>
+                        <div style={{width: '250px', height: '150px'}} className="profile-card px-3 py-4 text-center shadow d-flex mx-auto">
+                            <div className="name-field pr-3 col-6">
+                                <h3 className="userpost-name">{this.state.username}</h3>
+                                <p className="userpost-alias mb-0">@{this.state.username}</p>
+                            </div>
+                            <div className="tweet-number col-6">
+                                Tweets:
+                                <div className="tweet-amt">
+                                    {this.state.tweets.length}
+                                </div>
+                            </div>
+                        </div>
+                        <h1 className="text-center mt-5">No tweets Yet</h1>
+                     </Fragment>
                     :
-                    <div className="row mt-5">
-                        {this.state.tweets.map(tweet => <div key={uuid()}  className="col-12 col-md-4"> <Tweet  deleteTweet={this.deleteTweet} deletable={true} currentUser={this.state.username} key={uuid()} {...tweet} /></div>)}
-                    </div>
-                   
+                    <Fragment>
+                        <div style={{width: '250px', height: '150px'}} className="profile-card px-3 py-4 text-center shadow d-flex mx-auto">
+                            <div className="name-field pr-3 col-6">
+                                <h3 className="userpost-name">{this.state.username}</h3>
+                                <p className="userpost-alias mb-0">@{this.state.username}</p>
+                            </div>
+                            <div className="tweet-number col-6">
+                                Tweets:
+                                <div className="tweet-amt">
+                                    {this.state.tweets.length}
+                                </div>
+                            </div>
+                        </div>
+                        <div className=" h-100 mt-5">
+                        
+                            {this.state.tweets.map(tweet => <div key={uuid()}  className="col-md-6 col-12 mx-auto"> <Tweet deleteTweet={this.deleteTweet} deletable={true} currentUser={this.state.username} key={uuid()} {...tweet} /></div>)}
+                        
+                        </div>
+                    </Fragment>
                     :   
                     <Loader/>
                     
                 }
                 </div>
+                
         );
     }
 }

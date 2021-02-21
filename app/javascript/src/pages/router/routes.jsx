@@ -11,6 +11,7 @@ import {
 import Dashboard from '../dashboard/dashboard';
 import User from '../user/user';
 import Navbar from '@comp/navbar/navbar';
+import UserPublic from '../user-pubic/UserPublic';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
@@ -18,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div>
         <Navbar/>
         <Switch>
-          <Route path="/user" component={User} />
-          <Route path="/user/:username" component={User} />
+          <Route path="/user/:username" component={UserPublic} />
+          <Route exact path="/user" component={User} />
           <Route exact path="/dashboard" component={Dashboard} />
         </Switch>
         </div>

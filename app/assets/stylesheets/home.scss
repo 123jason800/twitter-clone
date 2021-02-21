@@ -46,6 +46,11 @@ body {
 
 a:hover {
     cursor: pointer;
+    text-decoration: none;
+}
+
+a {
+    color: #000000;
 }
 
 .icon-upload {

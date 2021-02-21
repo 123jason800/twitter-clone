@@ -1,6 +1,9 @@
 .profile-card {
-    background: $white;
-    height: 200px;
-    flex-direction: column;
-    justify-content: space-around;
+    background: rgb(216, 240, 248);
+    align-items: center;
+    border-radius: 150px;
+}
+
+.name-field {
+    border-right: 3px solid $blue;
 }

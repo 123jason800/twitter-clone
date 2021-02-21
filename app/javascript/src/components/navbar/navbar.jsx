@@ -30,10 +30,10 @@ const Navbar = props => {
     <header className="shadow">
         <div className="p-0 container-lg">
         <nav className="navbar navbar-expand-lg nav-twitter">
-            <div id="nav-brand">
+            <Link to="/dashboard" id="nav-brand">
                 <img src={TwitterLogo} className="logo logo-md"/>        
                 <h1 className="nav-title">Twitter</h1>
-            </div>
+            </Link>
 
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="icon-bars"></span>
