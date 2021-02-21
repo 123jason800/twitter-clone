@@ -41,7 +41,7 @@ const UserPublic = props => {
             :
             !tweets.length ?  
             <Fragment>
-                <div style={{width: '250px', height: '150px'}} className="profile-card px-3 py-4 text-center shadow d-flex mx-auto">
+                <div style={{width: '450px', height: '150px'}} className="profile-card px-3 py-4 text-center shadow d-flex mx-auto">
                     <div className="name-field pr-3 col-6">
                         <h3 className="userpost-name">{username}</h3>
                         <p className="userpost-alias mb-0">@{username}</p>
@@ -56,7 +56,7 @@ const UserPublic = props => {
             </Fragment>
             :
             <Fragment>
-                <div style={{width: '250px', height: '150px'}} className="profile-card px-3 py-4 text-center shadow d-flex mx-auto">
+                <div style={{width: '450px', height: '150px'}} className="profile-card px-3 py-4 text-center shadow d-flex mx-auto">
                     <div className="name-field pr-3 col-6">
                         <h3 className="userpost-name">{username}</h3>
                         <p className="userpost-alias mb-0">@{username}</p>

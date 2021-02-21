@@ -11,12 +11,12 @@ const ProfileCard = ({username,tweets,deleteTweet}) => {
 
         return (
         <Fragment>
-            <Link to={`/user/${username}`} className= "profile-card d-flex text-center shadow p-3 mb-3">
-                <div className="name-field pr-3 col-6">
+            <Link to={`/user/${username}`} className= "profile-card  text-center shadow p-3 mb-3">
+                <div className="name-field border-right-0 pb-2 border-bottom border-white pr-3">
                     <h3 className="userpost-name">{username}</h3>
                     <p className="userpost-alias mb-0">@{username}</p>
                 </div>
-                <div className="tweet-number col-6">
+                <div className="tweet-number pt-2">
                     Tweets:
                     <div className="tweet-amt">
                         {yourTweets.length}
